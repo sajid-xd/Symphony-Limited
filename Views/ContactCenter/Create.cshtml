@@ -1,0 +1,48 @@
+﻿@model SymphonyLimited.Models.Centre
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Create Contact Centre";
+}
+
+<h2>Create Contact Centre</h2>
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form asp-action="Create" method="post">
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-4">
+                                    <label asp-for="CentreName" class="form-label"></label>
+                                    <input asp-for="CentreName" class="form-control" />
+                                    <span asp-validation-for="CentreName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="Address" class="form-label"></label>
+                                    <input asp-for="Address" class="form-control" type="text" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="PhoneNumber" class="form-label"></label>
+                                    <input asp-for="PhoneNumber" class="form-control" type="text" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Validation Scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}

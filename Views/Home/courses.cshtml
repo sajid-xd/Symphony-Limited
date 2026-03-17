@@ -1,0 +1,89 @@
+@model SymphonyLimited.Controllers.MasterData
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<main class="flex-1 max-w-7xl mx-auto w-full px-4 md:px-10 py-8">
+    <!-- Page Header -->
+    <div class="flex flex-wrap justify-between items-end gap-6 mb-8">
+        <div class="max-w-2xl">
+            <p class="text-primary font-bold text-sm uppercase tracking-widest mb-2">Academic Programs</p>
+            <h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-tight mb-4">Our Certification Programs</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-lg">Symphony Ltd. offers specialized training and materials for various IT certifications, including Java, Networking, and Databases. Our courses are designed to take you from basic concepts to professional certification levels.</p>
+        </div>
+        <div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-xl border border-primary/20">
+            <p class="text-slate-700 dark:text-slate-300 text-sm font-semibold mb-1">Support Excellence</p>
+            <p class="text-primary text-xs font-medium">Available 24/7 for Lab Assistance</p>
+        </div>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        @foreach (var course in Model.CoursesDatas)
+        {
+            <div class="group bg-white dark:bg-slate-900 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col">
+                <div class="h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
+                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="@course.FilePath" alt="@course.CourseName" />
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="px-2 py-1 rounded-md bg-primary/5 text-primary text-[10px] font-bold uppercase tracking-wider">@course.CourseName</span>
+                        <span class="text-lg font-black text-primary">@(course.AdvancedFees.ToString("N2") ?? "0.00")</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900 dark:text-white">@course.CourseName</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-6 line-clamp-3">@course.Description</p>
+                    
+                    <div class="mt-auto border-t border-slate-100 dark:border-slate-800 pt-4 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                             <span class="material-symbols-outlined text-primary text-sm">verified</span>
+                             <span class="text-xs font-medium text-slate-600 dark:text-slate-400">Expert Faculty</span>
+                        </div>
+                        <a asp-action="coursedetails" class="text-primary font-bold text-sm hover:underline">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Training Tracks Section -->
+    <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-primary/50 transition-all">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform text-slate-900">
+                <span class="material-symbols-outlined text-6xl">school</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">With Basics</h3>
+            <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Ideal for beginners. Covers foundational concepts before diving into advanced specializations.</p>
+            <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-3xl font-black text-primary">$6,000</span>
+                <span class="text-slate-400 text-sm">/ 6 Months</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span> 2 Months Foundation + 4 Months Tech
+                </li>
+                <li class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span> Weekly Assessment & Mentorship
+                </li>
+            </ul>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group hover:border-primary/50 transition-all">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:scale-110 transition-transform text-slate-900">
+                <span class="material-symbols-outlined text-6xl">bolt</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Without Basics</h3>
+            <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm">Fast-track program for experienced learners. Focuses purely on core technical curriculum.</p>
+            <div class="flex items-baseline gap-2 mb-4">
+                <span class="text-3xl font-black text-primary">$4,275</span>
+                <span class="text-slate-400 text-sm">/ 4 Months</span>
+            </div>
+            <ul class="space-y-3 mb-8">
+                <li class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span> Intensive Direct Specialization
+                </li>
+                <li class="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300">
+                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span> Project-based Advanced Training
+                </li>
+            </ul>
+        </div>
+    </div>
+</main>

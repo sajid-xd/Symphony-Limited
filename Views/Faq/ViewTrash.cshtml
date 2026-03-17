@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SymphonyLimited.Models.FAQ>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container-fluid mt-4">
+                <table id="coursesTable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>SNo #</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int i = 0;
+                        }
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var course in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+                                    <td>@course.Question</td>
+                                    <td>@course.Answer</td>
+                                    <td>
+                                        <a asp-action="Restore" asp-route-id="@course.FAQId" class="btn btn-sm btn-danger">Restore</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="4" class="text-center">No FAQ available</td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+    </div>
+</main>

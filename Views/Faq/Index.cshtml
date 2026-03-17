@@ -1,0 +1,48 @@
+@model IEnumerable<SymphonyLimited.Models.FAQ>
+
+@{
+    ViewData["Title"] = "FAQ";
+}
+
+<main class="flex-1 max-w-4xl mx-auto w-full px-6 py-12">
+    <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h1>
+        <p class="text-slate-600 dark:text-slate-400 text-lg">Everything you need to know about our certifications, admissions, and campus facilities.</p>
+    </div>
+
+    <div class="space-y-4">
+        @if (Model != null && Model.Any())
+        {
+            int i = 0;
+            foreach (var faq in Model)
+            {
+                i++;
+                <div class="group border border-slate-200 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-900 overflow-hidden transition-all hover:border-primary/50">
+                    <button class="w-full px-6 py-5 text-left flex justify-between items-center gap-4" onclick="document.getElementById('faq-@i').classList.toggle('hidden'); this.querySelector('.arrow').classList.toggle('rotate-180')">
+                        <span class="font-bold text-slate-900 dark:text-white text-lg">@faq.Question</span>
+                        <span class="material-symbols-outlined text-primary transition-transform arrow">expand_more</span>
+                    </button>
+                    <div id="faq-@i" class="hidden px-6 pb-6 text-slate-600 dark:text-slate-400 text-base leading-relaxed border-t border-slate-50 dark:border-slate-800/50 pt-4">
+                        @faq.Answer
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="text-center py-20 bg-slate-50 dark:bg-slate-900 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800">
+                <span class="material-symbols-outlined text-4xl text-slate-300 mb-4">quiz</span>
+                <p class="text-slate-500 font-medium">No questions found. Check back later!</p>
+            </div>
+        }
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-16 bg-primary/5 dark:bg-primary/10 rounded-3xl p-8 md:p-12 text-center border border-primary/10">
+        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Still have questions?</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-8">Can't find the answer you're looking for? Please chat to our friendly team.</p>
+        <a asp-controller="Home" asp-action="contact" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-primary/20">
+            Contact Support <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+    </div>
+</main>

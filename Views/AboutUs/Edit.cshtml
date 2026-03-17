@@ -1,0 +1,40 @@
+﻿@model SymphonyLimited.Models.AboutUs
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit About Us";
+}
+
+<h2>About Us</h2>
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            @* CSRF Token *@
+                            <input type="hidden" asp-for="AboutUsId"/>
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-4">
+                                    <label asp-for="Description" class="form-label"></label>
+                                    <input asp-for="Description" class="form-control" />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Validation Scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}

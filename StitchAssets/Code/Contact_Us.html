@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f49bd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Contact Us | Symphony Limited</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 md:px-10 py-3 bg-white dark:bg-slate-900">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Symphony Limited</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Products</a>
+<a class="text-slate-700 dark:text-slate-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Support</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Contact</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-slate-200 dark:border-slate-700" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA5kpUHCcz-Z7n1swZ8EUqXybPe5vb5v3P5zRo2S0EH-CwMorIlDsX8C9csc11aFXkIhdaju7d2bU1G2ymrIsEEmqNl1aIv2Z4BpANu105mHq0pOS3kpHm03PLNq9EIeAB3cDV_05RlUiKg2NjqTHnL-6vwR-95Kz3o_1W_5587XbmRgshYbPUu3LKB3ydBq0YiBOm_jNFPN2XjS5SUCljeFtdSgE6sPu0w1GP01UnlxnGfeIwMtzvag23jCe2Ji5DAdQ0dwHHIyo0");'></div>
+</div>
+</header>
+<main class="flex flex-1 justify-center py-10 px-4 md:px-10 lg:px-40">
+<div class="layout-content-container flex flex-col max-w-[1200px] flex-1">
+<!-- Hero Section -->
+<div class="flex flex-wrap justify-between gap-6 p-4">
+<div class="flex min-w-72 flex-col gap-3">
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">Contact Us</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg font-normal max-w-2xl leading-normal">We're here to help. Reach out to any of our branches or send us a message through the form below. Our team typically responds within 24 hours.</p>
+</div>
+</div>
+<!-- Map Section -->
+<div class="flex px-4 py-6">
+<div class="w-full bg-slate-200 dark:bg-slate-800 bg-center bg-no-repeat aspect-video max-h-[400px] bg-cover rounded-xl object-cover shadow-sm overflow-hidden relative" data-alt="Modern interactive map showing worldwide branch locations" data-location="Global" style='background-image: url("https://placeholder.pics/svg/300");'>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+</div>
+</div>
+<!-- Contact Form & Branch Info Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 p-4 pt-10">
+<!-- Contact Form -->
+<div class="lg:col-span-7 bg-white dark:bg-slate-900 p-8 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h2 class="text-2xl font-bold mb-6 text-slate-900 dark:text-white">Send us a message</h2>
+<form class="flex flex-col gap-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Full Name</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="John Doe" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Email Address</label>
+<input class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="john@example.com" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Subject</label>
+<select class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary">
+<option>General Inquiry</option>
+<option>Technical Support</option>
+<option>Sales &amp; Partnerships</option>
+<option>Media Relations</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Message</label>
+<textarea class="rounded-lg border-slate-200 dark:border-slate-700 dark:bg-slate-800 focus:border-primary focus:ring-primary" placeholder="How can we help you?" rows="5"></textarea>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-all self-start" type="submit">
+                                    Send Message
+                                </button>
+</form>
+</div>
+<!-- Info Sidebar -->
+<div class="lg:col-span-5 flex flex-col gap-8">
+<div class="bg-primary/10 dark:bg-primary/20 p-6 rounded-xl border border-primary/20">
+<h3 class="text-primary text-xl font-bold mb-4">Customer Care</h3>
+<div class="flex flex-col gap-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Toll-Free Number</p>
+<p class="text-slate-600 dark:text-slate-400">1-800-SYMPHONY (796-7466)</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white">Email</p>
+<p class="text-slate-600 dark:text-slate-400">support@symphony.com</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white text-xl font-bold">Quick Contact</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm">Our support team is available Monday through Friday, 9:00 AM to 6:00 PM IST.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">chat</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Branches Section -->
+<div class="mt-16 mb-10">
+<h2 class="text-slate-900 dark:text-white text-[28px] font-bold leading-tight tracking-[-0.015em] px-4 pb-8">Our Global Network</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+<!-- Branch 1 -->
+<div class="flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 group shadow-sm hover:shadow-md transition-all">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Corporate office building in Ahmedabad" data-location="Ahmedabad" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAwSQulGs-oNZl_ek8zSYJw3y5s7DqCU1fS6tC3i0pZcmk2oWpCKAm9ZCeOzE_2gwt00MQIYYzx8lbi21PoTRW8-tGZOCb_4ZQzcBi9GE5TWfyoAknIazB5AP6Y9UhShFmjAzxwW-2TH7s22JNTtnDjcWZvenZQR4CTi93GO_Cv7RPiDlbH9SBINoS8W3HT4xwH-DpCjZZKJAZbPRqFojVC4Rh_brMopHWqH-M6qG7MsfEF0WtRibVijhTMRGc0TW2vr9utZTpNWFk");'></div>
+<div class="p-6">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal mb-1">Corporate Office</p>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Ahmedabad, Gujarat</p>
+</div>
+<div class="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-400 text-base">home</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Symphony House, FP12-TP50, Bodakdev, Ahmedabad - 380054</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 text-base">call</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm">+91 79 6621 1111</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Branch 2 -->
+<div class="flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 group shadow-sm hover:shadow-md transition-all">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Regional center office in New Delhi" data-location="New Delhi" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCK5cWbNM0nHbU-ZDb1HbwSQKMxZGuujIqyqfBRITh1pQ2IIi9PAUV1baUNN0Eu-lD6Na3dBWrbLYXaisr_gL8YkBldT7X3lnmbiaQQF1y5j6wD38biswSz6h6JVdL3iE3OJChOhIydL6z2Q97p8HtpSPBzC1Lo9GgxMywO3iQytwKtoRpzaC_zWmvd27s5ehN1eOIhYd-dOrXrAytJATRhkWLkNY3ocBeUAo_LMV9YjP4id7DcOh0qC6UBFBRvBEz9gYwAYrifyYQ");'></div>
+<div class="p-6">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal mb-1">North Regional Center</p>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">New Delhi, Delhi</p>
+</div>
+<div class="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-400 text-base">home</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">Level 4, Rectangle 1, Commercial Complex, Saket, New Delhi - 110017</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 text-base">call</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm">+91 11 4160 5555</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Branch 3 -->
+<div class="flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 group shadow-sm hover:shadow-md transition-all">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover" data-alt="Regional center office in Chennai" data-location="Chennai" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAqJ8nzHWDa3FAQcYJMPAAK7wH9VMu1QIt8N-aZdXmSC_SScnutsZfnTU0RA-_zLCFsakRST8TiJhc3ppzN4K4XdqHTS3NqnnOJwjngF53Riam229xoL0hAbzDPIzbAyoM5b7K2SPAkNIVz0bvelzhTNOFg0jkM88HhH9OTT6OZJyB9FDMmRw2Cvyzxkz3pb4CHPFmTCbjm1GiXpuufwMBBE6gheGX-rS-PTDU0SpGjxjfuuovcPmqYprALVWrRgIcFIBINunM8ro0");'></div>
+<div class="p-6">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-normal mb-1">South Regional Center</p>
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium uppercase tracking-wider">Chennai, Tamil Nadu</p>
+</div>
+<div class="space-y-2 border-t border-slate-100 dark:border-slate-800 pt-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-slate-400 text-base">home</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">No. 27, 1st Floor, Khader Nawaz Khan Road, Nungambakkam, Chennai - 600006</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 text-base">call</span>
+<p class="text-slate-500 dark:text-slate-400 text-sm">+91 44 2815 3333</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-10 px-6 md:px-10 lg:px-40">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z"></path>
+</svg>
+</div>
+<span class="font-bold text-slate-900 dark:text-white">Symphony Limited</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm">© 2024 Symphony Limited. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors text-sm" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

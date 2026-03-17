@@ -1,0 +1,169 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<main>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="flex flex-col gap-8">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                        </span>
+                        Enrolling for @DateTime.Now.Year
+                    </div>
+                    <h1 class="text-5xl lg:text-7xl font-black leading-tight tracking-tight text-slate-900 dark:text-white">
+                        Master the <span class="text-primary">Future</span> of IT
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 max-w-xl">
+                        Industry-leading certification training in Networking, Java, and Databases. Elevate your career with expert-led courses designed for the modern tech landscape.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="/Home/courses" class="bg-primary text-white px-8 py-4 rounded-xl text-base font-bold hover:shadow-lg hover:shadow-primary/30 transition-all">
+                            Explore Courses
+                        </a>
+                        <a href="/EntranceExam/Index" class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-xl text-base font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition-all text-slate-900 dark:text-white">
+                            View Entrance Exams
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-6 text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">verified</span>
+                            <span class="text-sm font-medium">Certified Instructors</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">workspace_premium</span>
+                            <span class="text-sm font-medium">Global Accreditation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-video w-full rounded-2xl bg-slate-200 dark:bg-slate-800 overflow-hidden shadow-2xl ring-1 ring-slate-200 dark:ring-slate-700">
+                        <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcDqYPHITP01_Qo_0FUwYanG5LMamy-L8lBwPpjr9RYoINMdCoFs0AY_lhezp-czr-jeWKV5HGi_rjnx8O76Ney2phDL-MdX43JtvtjUonTpjUZ77WHYvAw_OzIY7uG6B-yOq46WOL7n0yhTPfJO8dAY_LSX1aZsHiS8EWSHn6EI_QFW82dZOBN5ZPJbgWrldAAmJqM4vNfpnkFZCjEWXOFJu_G6ClhdBiXuXjtO7a-h6Erg8WIB2Qv_TRWeMvfk92UFmgxBSIapw" />
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 max-w-xs hidden sm:block">
+                        <p class="text-sm font-bold text-primary mb-1">Upcoming Exam</p>
+                        <p class="text-base font-semibold text-slate-900 dark:text-white">Java SE 17 Developer Certification</p>
+                        <p class="text-xs text-slate-500 mt-2">Next window: @DateTime.Now.AddMonths(1).ToString("MMM dd, yyyy")</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Summary -->
+    <section class="py-20 bg-slate-100 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-12 items-start">
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">Empowering Your Tech Journey</h2>
+                    <div class="w-20 h-1.5 bg-primary rounded-full mb-6"></div>
+                </div>
+                <div class="lg:col-span-2">
+                    <p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Symphony Limited is a premier IT and Software training institute dedicated to bridging the skills gap. With a focus on practical knowledge and global certifications, we prepare students for the evolving demands of the tech industry. Our mission is to transform learners into leaders through rigorous training and real-world projects.
+                    </p>
+                    <div class="grid sm:grid-cols-3 gap-8 mt-12">
+                        <div>
+                            <h3 class="text-4xl font-black text-primary mb-1">15k+</h3>
+                            <p class="text-sm font-medium text-slate-500">Students Graduated</p>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl font-black text-primary mb-1">98%</h3>
+                            <p class="text-sm font-medium text-slate-500">Placement Rate</p>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl font-black text-primary mb-1">50+</h3>
+                            <p class="text-sm font-medium text-slate-500">Expert Courses</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Courses Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-bold text-slate-900 dark:text-white">New Courses</h2>
+                    <p class="text-slate-500 mt-2">The latest additions to our curriculum for @DateTime.Now.Year.</p>
+                </div>
+                <a class="text-primary font-bold flex items-center gap-1 hover:underline" href="/Home/courses">
+                    View all courses <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Course Card 1 -->
+                <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOHgsce7dPKme6okRXeHP2mpn4Uo7KZDblr9PCqYCYyJgogekQQvG1z0rPhrvpqf_-q-jJHk0-bB4LvVpbWwtdbfqdBKn7wJPsypjO27XjZev9lUJ_JEesRDpnM6t5ZeMLE5zAw0DrYVb9rXfRiJTjS0Jzet96chpC5ZKaLV-ObGtkr3FsY74TgD2l8FmYak9G2U0T1dRdQ1CcBKFBOM3To-bAH8jwq9f-31gOznpS7vRI4rrHxZLuACnRkz9Jc7YAdsleSXkfaC4" />
+                    </div>
+                    <div class="p-6">
+                        <span class="px-2 py-1 rounded-md bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">Software Development</span>
+                        <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white">Advanced Java Microservices</h3>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">Master Spring Boot, Docker, and Kubernetes for building scalable enterprise applications.</p>
+                        <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
+                            <span class="text-lg font-bold text-slate-900 dark:text-white">$299</span>
+                            <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Card 2 -->
+                <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGZk0UeeswGjMuVxuyguEk15oRBea53foIo7EZt1KpMhgQpCv_V7zJ-Dbl4lDkLI7wITVfoZA1o_JABPPEM9GmzLalpCRfYwYSdRr2FIprYVY7zX-ktLIWyuHI80pgP8RQuh9NTCyjxi_x_XeJgPQkLBT7odIGqxqOgGq33z-UcW2J9RPyX4supE_l94rWyI4rCjXn8xrnFOuIv4GGNupn30aIslRdJWdcx6HRT3APKf4OV3KoUvIG6guJ_IcinmKaSHJAz67sgY" />
+                    </div>
+                    <div class="p-6">
+                        <span class="px-2 py-1 rounded-md bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider">Networking & Cloud</span>
+                        <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white">Cisco Certified DevNet</h3>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">Automate network operations with Python and modern DevOps tools on Cisco hardware.</p>
+                        <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
+                            <span class="text-lg font-bold text-slate-900 dark:text-white">$349</span>
+                            <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Course Card 3 -->
+                <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
+                    <div class="h-48 overflow-hidden bg-slate-200">
+                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqSrJL59aR8a2xd-JY2bynRMLJS_ZfRzpRTR2ojSg03My1WSohKcajVlpBsk6LflyqoFGSKfQBkl5BKV_P525GH7Y_iQJbBcdvxh_o2tXHyeZWqyUELo_AT4jqBW99lH0sq1-tNle6Y20TfECrltj-1ArugCMUUUHemaBnIaK3Iuu3yg6V27XhS0QG6_x7LOI-UrrXCXezpbxTNXsYCXqlomsdqN0y_hVAS1Q0wlFLLpWM0gRT3uF6suj9-WBNcmTVdeNdMZFRb8U" />
+                    </div>
+                    <div class="p-6">
+                        <span class="px-2 py-1 rounded-md bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-[10px] font-bold uppercase tracking-wider">Databases</span>
+                        <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white">Oracle NoSQL Essentials</h3>
+                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">Learn to design high-performance NoSQL architectures for high-volume data applications.</p>
+                        <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
+                            <span class="text-lg font-bold text-slate-900 dark:text-white">$279</span>
+                            <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - Entrance Exams -->
+    <section class="py-24 px-4">
+        <div class="max-w-5xl mx-auto rounded-3xl bg-primary px-8 py-16 text-center text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+            <h2 class="text-3xl md:text-5xl font-black mb-6 relative z-10">Ready to take the first step?</h2>
+            <p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto relative z-10">
+                Check out our upcoming entrance exams and secure your spot in the next cohort. Scholarships available for top performers.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                <a href="/EntranceExam/Index" class="bg-white text-primary px-8 py-4 rounded-xl text-lg font-bold hover:bg-slate-100 transition-all">
+                    View Exam Calendar
+                </a>
+                <a href="/Home/contact" class="bg-primary border border-white/30 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/10 transition-all">
+                    Request a Brochure
+                </a>
+            </div>
+        </div>
+    </section>
+</main>

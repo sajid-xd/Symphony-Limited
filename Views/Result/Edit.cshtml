@@ -1,0 +1,78 @@
+﻿@model SymphonyLimited.Models.Result
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit Result";
+}
+
+<h2>Edit Result</h2>
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            @* CSRF Token *@
+                            <input type="hidden" asp-for="ResultId"/>
+                            <div class="row">
+                                <div class="form-group mb-3  col-md-4">
+                                    <label class="form-label" asp-for="StudentId"></label>
+                                    <div class="input-group input-group-merge">
+                                        <select class="form-control" asp-for="StudentId">
+                                            <option value="">Select Student</option>
+                                            @foreach (Student student in ViewBag.Students)
+                                            {
+                                                <!option value="@student.StudentId" @(student.StudentId == Model.StudentId ? "selected" : "")>@student.Name</!option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <span asp-validation-for="StudentId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="Marks" class="form-label"></label>
+                                    <input asp-for="Marks" class="form-control" type="number" step="0.01" min="0" />
+                                    <span asp-validation-for="Marks" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label class="form-label" asp-for="ClassType"></label>
+                                    <div class="input-group input-group-merge">
+                                        <select class="form-control" asp-for="ClassType">
+                                            <option value="">Select ClassType</option>
+                                            @foreach (var ticket in ViewBag.ClassType)
+                                            {
+                                                <!option value="@ticket.Id" @(ticket.Id == (int)Model.ClassType ? "selected" : "")>@ticket.Name</!option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <span asp-validation-for="ClassType" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="CourseFees" class="form-label"></label>
+                                    <input asp-for="CourseFees" class="form-control" type="number" step="0.01" min="0" />
+                                    <span asp-validation-for="CourseFees" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="LastDateOfPayment" class="form-label"></label>
+                                    <input asp-for="LastDateOfPayment" class="form-control" type="date" />
+                                    <span asp-validation-for="LastDateOfPayment" class="text-danger"></span>
+                                </div>
+
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Validation Scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Symphony Ltd</title>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f49bd',
+            'primary-dark': '#0a3a9a',
+            'brand-bg': '#f8fafc',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'custom': '8px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-styling">
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .auth-card {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+    /* Replicating the rounded theme from the snapshot */
+    .rounded-theme {
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-slate-800 flex flex-col min-h-screen">
+<!-- BEGIN: MainHeader -->
+<header class="bg-white border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<!-- Logo and Navigation -->
+<div class="flex items-center space-x-10">
+<a class="flex items-center space-x-2" href="/">
+<!-- Placeholder for Symphony Limited Logo -->
+<div class="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
+<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900">Symphony Limited</span>
+</a>
+<nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+<a class="hover:text-primary transition-colors" href="#">Courses</a>
+<a class="hover:text-primary transition-colors" href="#">Certifications</a>
+<a class="hover:text-primary transition-colors" href="#">About Us</a>
+<a class="hover:text-primary transition-colors" href="#">Entrance Exams</a>
+</nav>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center space-x-4">
+<div class="relative hidden lg:block">
+<input class="w-64 pl-10 pr-4 py-2 bg-slate-100 border-none rounded-theme text-sm focus:ring-2 focus:ring-primary/20" placeholder="Search courses..." type="text"/>
+<svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<a class="px-6 py-2 bg-primary text-white text-sm font-semibold rounded-theme hover:bg-primary-dark transition-colors" href="#">Login</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: LoginSection -->
+<main class="flex-grow flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div class="max-w-md w-full space-y-8 bg-white p-8 sm:p-10 rounded-theme auth-card">
+<div class="text-center">
+<h2 class="text-3xl font-extrabold text-slate-900">Welcome Back</h2>
+<p class="mt-2 text-sm text-slate-500">
+          Access your student portal and continue your learning journey
+        </p>
+</div>
+<form action="#" class="mt-8 space-y-6" method="POST">
+<div class="space-y-4">
+<!-- Email Field -->
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1" for="email-address">Email Address or Username</label>
+<input autocomplete="email" class="appearance-none block w-full px-3 py-3 border border-slate-300 placeholder-slate-400 text-slate-900 rounded-theme focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" id="email-address" name="email" placeholder="e.g. learner@symphony.com" required="" type="email"/>
+</div>
+<!-- Password Field -->
+<div>
+<label class="block text-sm font-medium text-slate-700 mb-1" for="password">Password</label>
+<input autocomplete="current-password" class="appearance-none block w-full px-3 py-3 border border-slate-300 placeholder-slate-400 text-slate-900 rounded-theme focus:outline-none focus:ring-primary focus:border-primary sm:text-sm" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Options: Remember Me & Forgot Password -->
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="h-4 w-4 text-primary focus:ring-primary border-slate-300 rounded" id="remember-me" name="remember-me" type="checkbox"/>
+<label class="ml-2 block text-sm text-slate-600" for="remember-me">
+              Remember me
+            </label>
+</div>
+<div class="text-sm">
+<a class="font-medium text-primary hover:text-primary-dark" href="#">
+              Forgot your password?
+            </a>
+</div>
+</div>
+<!-- Submit Button -->
+<div>
+<button class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-theme text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200" type="submit">
+            Sign In
+          </button>
+</div>
+</form>
+<!-- Signup Link -->
+<div class="text-center mt-6">
+<p class="text-sm text-slate-500">
+          Don't have an account yet? 
+          <a class="font-bold text-primary hover:text-primary-dark ml-1" href="#">Create an Account</a>
+</p>
+</div>
+<!-- Secure Login Badge -->
+<div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-center space-x-2 text-slate-400">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+<span class="text-xs font-medium uppercase tracking-wider">Secure SSL Encrypted Connection</span>
+</div>
+</div>
+</main>
+<!-- END: LoginSection -->
+<!-- BEGIN: MainFooter -->
+<footer class="bg-white border-t border-slate-200 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+<!-- Brand Info -->
+<div class="space-y-4">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 bg-primary rounded flex items-center justify-center">
+<svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</div>
+<span class="text-lg font-bold text-slate-900">Symphony Limited</span>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed">
+            Leading the way in IT excellence through specialized training and industry-recognized certifications.
+          </p>
+</div>
+<!-- Links Groups -->
+<div>
+<h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Training</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">Networking Academy</a></li>
+<li><a class="hover:text-primary" href="#">Java Programming</a></li>
+<li><a class="hover:text-primary" href="#">Database Management</a></li>
+<li><a class="hover:text-primary" href="#">Cybersecurity Basics</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Company</h4>
+<ul class="space-y-2 text-sm text-slate-500">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Careers</a></li>
+<li><a class="hover:text-primary" href="#">Success Stories</a></li>
+<li><a class="hover:text-primary" href="#">Contact</a></li>
+</ul>
+</div>
+<!-- Connect -->
+<div>
+<h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Connect</h4>
+<div class="flex space-x-3 mb-4">
+<a class="w-10 h-10 bg-slate-100 rounded-theme flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.647.35-1.087.635-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"></path></svg>
+</a>
+<a class="w-10 h-10 bg-slate-100 rounded-theme flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+<a class="w-10 h-10 bg-slate-100 rounded-theme flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+</a>
+</div>
+<p class="text-xs text-slate-400">Subscribe to our newsletter for latest tech updates.</p>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-100 text-center">
+<p class="text-xs text-slate-400 mb-4">© 2023 Symphony Limited. All rights reserved.</p>
+<div class="flex justify-center space-x-6 text-xs text-slate-400">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Cookie Policy</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- END: MainFooter -->
+</body></html>

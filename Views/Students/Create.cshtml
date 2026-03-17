@@ -1,0 +1,77 @@
+﻿@model SymphonyLimited.Models.Student
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Create Student";
+}
+
+<h2>Create Student</h2>
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form asp-action="Create" method="post">
+                            <div class="row">
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="RollNumber" class="form-label"></label>
+                                    <input asp-for="RollNumber" class="form-control" type="number" step="0.01" min="0" />
+                                    <span asp-validation-for="RollNumber" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="Name" class="form-label"></label>
+                                    <input asp-for="Name" class="form-control" type="text" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="Email" class="form-label"></label>
+                                    <input asp-for="Email" class="form-control" type="email"/>
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="Phone" class="form-label"></label>
+                                    <input asp-for="Phone" class="form-control" type="text"/>
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label class="form-label" asp-for="CourseId"></label>
+                                    <div class="input-group input-group-merge">
+                                        <select class="form-control" asp-for="CourseId">
+                                            <option value="">Select Course</option>
+                                            @foreach (Course course in ViewBag.Courses)
+                                            {
+                                                <option value="@course.CourseId">@course.CourseName</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <span asp-validation-for="CourseId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="PaymentMode" class="form-label"></label>
+                                    <input asp-for="PaymentMode" class="form-control" type="text"/>
+                                    <span asp-validation-for="PaymentMode" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="PaymentDetails" class="form-label"></label>
+                                    <input asp-for="PaymentDetails" class="form-control" type="text"/>
+                                    <span asp-validation-for="PaymentDetails" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Validation Scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,44 @@
+﻿@model SymphonyLimited.Models.FAQ
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit Result";
+}
+
+<h2>Edit Result</h2>
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="FAQId"/>
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-4">
+                                    <label asp-for="Question" class="form-label"></label>
+                                    <input asp-for="Question" class="form-control" />
+                                    <span asp-validation-for="Question" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="Answer" class="form-label"></label>
+                                    <input asp-for="Answer" class="form-control" type="text" />
+                                    <span asp-validation-for="Answer" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Validation Scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}

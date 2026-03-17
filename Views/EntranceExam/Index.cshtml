@@ -1,0 +1,94 @@
+@model IEnumerable<SymphonyLimited.Models.EntranceExam>
+
+@{
+    ViewData["Title"] = "Entrance Exams";
+}
+
+<main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+        <div class="max-w-2xl">
+            <p class="text-primary font-bold text-sm uppercase tracking-widest mb-2">Admissions</p>
+            <h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-tight mb-4">Entrance Exams & Results</h1>
+            <p class="text-slate-600 dark:text-slate-400 text-lg">Your gateway to Symphony Limited's premier IT certification programs. View upcoming exam dates and registration details below.</p>
+        </div>
+        <div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined">event</span>
+            </div>
+            <div>
+                <p class="text-xs text-slate-500 font-bold uppercase">Next Enrollment</p>
+                <p class="text-slate-900 dark:text-white font-bold">Fall 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exams Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var exam in Model)
+            {
+                <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-all group flex flex-col shadow-sm">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="px-4 py-2 bg-primary/5 text-primary rounded-xl font-bold text-sm">
+                            @exam.ExamDate.ToString("MMM dd, yyyy")
+                        </div>
+                        <span class="text-2xl font-black text-slate-900 dark:text-white">$@exam.ExamFees.ToString("N0")</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Entrance Examination</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mb-8 flex-1 leading-relaxed">@exam.Description</p>
+                    
+                    <div class="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                             <span class="material-symbols-outlined text-primary text-base">schedule</span>
+                             <span class="text-xs font-medium text-slate-600 dark:text-slate-400">10:00 AM AST</span>
+                        </div>
+                        <a href="#" class="text-primary font-bold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                            Register Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-span-full text-center py-24 bg-slate-50 dark:bg-slate-900 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800">
+                <span class="material-symbols-outlined text-5xl text-slate-300 mb-6 font-light">calendar_today</span>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2">No Exams Scheduled</h3>
+                <p class="text-slate-500 max-w-sm mx-auto">There are currently no upcoming entrance exams. Please subscribe to our newsletter for updates.</p>
+            </div>
+        }
+    </div>
+
+    <!-- Results Section -->
+    <div class="mt-20 bg-slate-900 rounded-[2.5rem] p-8 md:p-16 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/20 to-transparent pointer-events-none"></div>
+        <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-primary font-bold text-sm uppercase tracking-widest mb-4 block">Quick Check</span>
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">View Your Exam Results Instantly</h2>
+                <p class="text-slate-400 mb-8 text-lg">Access your certification progress and marks sheet by entering your unique hall ticket number.</p>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" placeholder="Hall Ticket Number" class="px-6 py-4 rounded-xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-primary outline-none flex-1" />
+                    <button class="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-primary/25">Check Results</button>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                 <div class="bg-slate-800/50 backdrop-blur-xl rounded-3xl p-8 border border-white/5">
+                    <div class="space-y-4">
+                        <div class="h-4 bg-white/5 rounded-full w-3/4"></div>
+                        <div class="h-4 bg-white/5 rounded-full w-full"></div>
+                        <div class="h-4 bg-white/5 rounded-full w-2/3"></div>
+                        <div class="pt-4 flex justify-between">
+                            <div class="w-12 h-12 rounded-lg bg-primary/20"></div>
+                            <div class="w-12 h-12 rounded-lg bg-white/5"></div>
+                            <div class="w-12 h-12 rounded-lg bg-white/5"></div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,83 @@
+﻿@model SymphonyLimited.Models.Course
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit Course";
+}
+
+<h2>Edit Course</h2>
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="container mt-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                            @* CSRF Token *@
+                            <input type="hidden" asp-for="CourseId"/>
+                            <div class="row">
+                                <div class="form-group mb-3 col-md-4">
+                                    <label asp-for="CourseName" class="form-label"></label>
+                                    <input asp-for="CourseName" class="form-control" />
+                                    <span asp-validation-for="CourseName" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="StartTime" class="form-label"></label>
+                                    <input asp-for="StartTime" class="form-control" type="date" />
+                                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="EndTime" class="form-label"></label>
+                                    <input asp-for="EndTime" class="form-control" type="date" />
+                                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="BasicFees" class="form-label"></label>
+                                    <input asp-for="BasicFees" class="form-control" type="number" step="0.01" min="0" />
+                                    <span asp-validation-for="BasicFees" class="text-danger"></span>
+                                </div>
+                                <div class="form-group mb-3  col-md-4">
+                                    <label asp-for="AdvancedFees" class="form-label"></label>
+                                    <input asp-for="AdvancedFees" class="form-control" type="number" step="0.01" min="0" />
+                                    <span asp-validation-for="AdvancedFees" class="text-danger"></span>
+                                </div>
+                                <div class="col-sm-12 col-md-4 mb-3">
+                                    <label class="form-label" for="basic-icon-default-fullname">File</label>
+                                    <div class="input-group input-group-merge">
+                                        <input type="file" asp-for="CourseFileImage" class="form-control">
+                                    </div>
+                                    <span class="text-danger" asp-validation-for="FilePath"></span>
+                                    @if (!string.IsNullOrEmpty(Model.FilePath))
+                                    {
+                                        <a href="@Url.Content(Model.FilePath)"
+                                           target="_blank"
+                                           class="btn btn-sm btn-primary mt-2">
+                                            View Document
+                                        </a>
+
+                                    }
+                                </div>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label asp-for="Description" class="form-label"></label>
+                                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <a asp-action="Index" class="btn btn-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+@section Scripts {
+    <!-- Validation Scripts -->
+    <partial name="_ValidationScriptsPartial" />
+}

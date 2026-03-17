@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+            <div class="row">
+                <div class="col-xl-6 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between p-md-1">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center">
+                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Total Courses</h4>
+                                        @* <p class="mb-0">Monthly blog posts</p> *@
+                                    </div>
+                                </div>
+                                <div class="align-self-center">
+                                    <a asp-controller="Courses" asp-action="Index" class="text-decoration-none">
+                                        <h2 class="h1 mb-0">@ViewBag.CoursesCount</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between p-md-1">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center">
+                                        <i class="far fa-comment-alt text-warning fa-3x me-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Total FAQ's</h4>
+                                        @* <p class="mb-0">Monthly blog posts</p> *@
+                                    </div>
+                                </div>  
+                                <<div class="align-self-center">
+                                    <a asp-controller="Faq" asp-action="Index" class="text-decoration-none">
+                                        <h2 class="h1 mb-0">@ViewBag.QuestionsCount</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between p-md-1">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center">
+                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Total Students</h4>
+                                        @* <p class="mb-0">Monthly blog posts</p> *@
+                                    </div>
+                                </div>
+                                <div class="align-self-center">
+                                    <a asp-controller="Students" asp-action="Index" class="text-decoration-none">
+                                        <h2 class="h1 mb-0">@ViewBag.Students</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between p-md-1">
+                                <div class="d-flex flex-row">
+                                    <div class="align-self-center">
+                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Total Contact Centre</h4>
+                                        @* <p class="mb-0">Monthly blog posts</p> *@
+                                    </div>
+                                </div>
+                                <div class="align-self-center">
+                                    <a asp-controller="ContactCentre" asp-action="Index" class="text-decoration-none">
+                                        <h2 class="h1 mb-0">@ViewBag.ContactCentreCount</h2>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Section: Statistics with subtitles-->
+    </div>
+</main>
+
