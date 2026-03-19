@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace SymphonyLimited.Models
 {
@@ -8,10 +8,10 @@ namespace SymphonyLimited.Models
         // Primary Key: Unique ID for the login attempt/session record
         public int Id { get; set; }
 
-        // Mandatory field that ensures the input is a valid email format
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+        // Mandatory field that accepts either Username or Email
+        [Required(ErrorMessage = "Email or Username is required.")]
+        [Display(Name = "Email or Username")]
+        public string EmailOrUsername { get; set; }
 
         // Mandatory field that treats the input as a secure password (hides characters)
         [Required]

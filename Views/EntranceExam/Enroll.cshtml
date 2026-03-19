@@ -1,0 +1,69 @@
+@model SymphonyLimited.Models.ExamEnrollment
+
+@{
+    ViewData["Title"] = "Enroll in Exam";
+}
+
+<main class="w-full bg-slate-50 dark:bg-slate-950 pb-20 pt-16 min-h-screen">
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="mb-8 text-center">
+            <span class="inline-flex items-center justify-center p-3 bg-primary/10 text-primary rounded-2xl mb-4">
+                <span class="material-symbols-outlined text-3xl">how_to_reg</span>
+            </span>
+            <h1 class="text-3xl font-black text-slate-900 dark:text-white mb-2">Finalize Your Enrollment</h1>
+            <p class="text-slate-500 font-medium">Please review your details and select the desired course before generating your Hall Ticket.</p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 p-8 md:p-12">
+            <form asp-action="Enroll" method="post">
+                <input type="hidden" asp-for="EntranceExamId" />
+
+                <div class="space-y-6">
+                    <!-- Exam Info Read-Only -->
+                    <div class="p-6 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-100 dark:border-slate-700">
+                        <h4 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Exam Schedule</h4>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-xs text-slate-500 mb-1">Date & Time</p>
+                                <p class="font-bold text-slate-900 dark:text-white">@Model.EntranceExam.ExamDate.ToString("MMM dd, yyyy - hh:mm tt")</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 mb-1">Exam Fees</p>
+                                <p class="font-bold text-slate-900 dark:text-white">Rs. @Model.EntranceExam.ExamFees.ToString("N0")</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Email -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Applicant Email</label>
+                        <input type="email" value="@Model.UserEmail" disabled class="w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-none text-slate-500 cursor-not-allowed" />
+                    </div>
+
+                    <!-- Course Selection -->
+                    <div>
+                        <label asp-for="CourseId" class="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2">Select Target Course</label>
+                        <select asp-for="CourseId" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary outline-none transition-all dark:text-white">
+                            <option value="">-- Choose a Course --</option>
+                            @foreach (var c in ViewBag.Courses)
+                            {
+                                <option value="@c.CourseId">@c.CourseName (From Rs. @c.BasicFees)</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CourseId" class="text-red-500 text-xs font-bold mt-1 block"></span>
+                    </div>
+
+                    <div class="pt-6">
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/25 flex items-center justify-center gap-2">
+                            Acknowledge & Generate Hall Ticket <span class="material-symbols-outlined">confirmation_number</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

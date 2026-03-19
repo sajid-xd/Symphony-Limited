@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using SymphonyLimited.Models;
@@ -30,9 +30,22 @@ namespace SymphonyLimited.Controllers
             // Verifies if the submitted form data meets the model validation rules
             if (ModelState.IsValid)
             {
-                // Queries the database to find a matching user with the provided email and password
+                // Check if credentials match an Admin
+                var admin = _context.AdminLogins
+                    .FirstOrDefault(x => x.UserName == model.EmailOrUsername && x.Password == model.Password);
+
+                if (admin != null)
+                {
+                    // Create a secure session for the admin user
+                    HttpContext.Session.SetString("AdminUser", admin.UserName);
+
+                    // Redirect to the Admin Dashboard
+                    return RedirectToAction("AdminDashboard", "Admin");
+                }
+
+                // Queries the database to find a matching user with the provided email/username and password
                 var user = _context.Registration
-                    .FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
+                    .FirstOrDefault(x => (x.Email == model.EmailOrUsername || x.Username == model.EmailOrUsername) && x.Password == model.Password);
 
                 // If user credentials are correct, establish a session
                 if (user != null)
@@ -40,18 +53,13 @@ namespace SymphonyLimited.Controllers
                     // Storing user details in session variables for global access
                     HttpContext.Session.SetString("UserEmail", user.Email);
                     HttpContext.Session.SetString("UserName", user.FullName);
-                    //HttpContext.Session.SetString("Role", user.Role);
-
-                    //if (user.Role == "Admin")
-                    //    return RedirectToAction("Index", "Admin");
-                    //else
 
                     // Redirects authenticated user to the Home page
                     return RedirectToAction("Index", "Home");
                 }
 
                 // If credentials don't match, display an error message on the form
-                ModelState.AddModelError("", "Invalid Email or Password");
+                ModelState.AddModelError("", "Invalid Username/Email or Password");
             }
 
             // Returns the view with validation errors if the form is invalid

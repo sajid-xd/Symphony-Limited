@@ -23,7 +23,30 @@ namespace SymphonyLimited.Controllers
         // GET: Loads the main landing/home page of the website
         public IActionResult Index()
         {
-            return View();
+            // Fetch top 3 latest active courses for the homepage
+            var latestCourses = _context.Courses
+                .Where(c => !c.IsTrashed)
+                .OrderByDescending(c => c.CourseId)
+                .Take(3)
+                .Select(c => new CoursesData
+                {
+                    CourseId = c.CourseId,
+                    CourseName = c.CourseName,
+                    Description = c.Description,
+                    StartTime = c.StartTime,
+                    EndTime = c.EndTime,
+                    BasicFees = c.BasicFees,
+                    AdvancedFees = c.AdvancedFees,
+                    FilePath = c.FilePath
+                })
+                .ToList();
+
+            var model = new MasterData
+            {
+                CoursesDatas = latestCourses
+            };
+
+            return View(model);
         }
 
         // GET: Loads the "About Us" page detailing the company's information

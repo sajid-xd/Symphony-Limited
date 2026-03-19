@@ -1,3 +1,4 @@
+@model SymphonyLimited.Controllers.MasterData
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -98,53 +99,51 @@
                 </a>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Course Card 1 -->
-                <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOHgsce7dPKme6okRXeHP2mpn4Uo7KZDblr9PCqYCYyJgogekQQvG1z0rPhrvpqf_-q-jJHk0-bB4LvVpbWwtdbfqdBKn7wJPsypjO27XjZev9lUJ_JEesRDpnM6t5ZeMLE5zAw0DrYVb9rXfRiJTjS0Jzet96chpC5ZKaLV-ObGtkr3FsY74TgD2l8FmYak9G2U0T1dRdQ1CcBKFBOM3To-bAH8jwq9f-31gOznpS7vRI4rrHxZLuACnRkz9Jc7YAdsleSXkfaC4" />
-                    </div>
-                    <div class="p-6">
-                        <span class="px-2 py-1 rounded-md bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 text-[10px] font-bold uppercase tracking-wider">Software Development</span>
-                        <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white">Advanced Java Microservices</h3>
-                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">Master Spring Boot, Docker, and Kubernetes for building scalable enterprise applications.</p>
-                        <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
-                            <span class="text-lg font-bold text-slate-900 dark:text-white">$299</span>
-                            <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
+                @if (Model != null && Model.CoursesDatas != null)
+                {
+                    foreach (var c in Model.CoursesDatas)
+                    {
+                        var imageUrl = string.IsNullOrEmpty(c.FilePath) ? "https://lh3.googleusercontent.com/aida-public/AB6AXuCOHgsce7dPKme6okRXeHP2mpn4Uo7KZDblr9PCqYCYyJgogekQQvG1z0rPhrvpqf_-q-jJHk0-bB4LvVpbWwtdbfqdBKn7wJPsypjO27XjZev9lUJ_JEesRDpnM6t5ZeMLE5zAw0DrYVb9rXfRiJTjS0Jzet96chpC5ZKaLV-ObGtkr3FsY74TgD2l8FmYak9G2U0T1dRdQ1CcBKFBOM3To-bAH8jwq9f-31gOznpS7vRI4rrHxZLuACnRkz9Jc7YAdsleSXkfaC4" : Url.Content("~" + c.FilePath);
+                        
+                        <!-- Dynamic Course Card -->
+                        <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
+                            <div class="h-48 overflow-hidden bg-slate-200">
+                                <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="@imageUrl" />
+                            </div>
+                            <div class="p-6">
+                                <span class="px-2 py-1 rounded-md bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider">Course Training</span>
+                                <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white line-clamp-1" title="@c.CourseName">@c.CourseName</h3>
+                                <p class="text-slate-500 text-sm mb-6 line-clamp-2">@c.Description</p>
+                                <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
+                                    <span class="text-lg font-bold text-slate-900 dark:text-white">Rs. @c.BasicFees</span>
+                                    <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <!-- Course Card 2 -->
-                <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGZk0UeeswGjMuVxuyguEk15oRBea53foIo7EZt1KpMhgQpCv_V7zJ-Dbl4lDkLI7wITVfoZA1o_JABPPEM9GmzLalpCRfYwYSdRr2FIprYVY7zX-ktLIWyuHI80pgP8RQuh9NTCyjxi_x_XeJgPQkLBT7odIGqxqOgGq33z-UcW2J9RPyX4supE_l94rWyI4rCjXn8xrnFOuIv4GGNupn30aIslRdJWdcx6HRT3APKf4OV3KoUvIG6guJ_IcinmKaSHJAz67sgY" />
-                    </div>
-                    <div class="p-6">
-                        <span class="px-2 py-1 rounded-md bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 text-[10px] font-bold uppercase tracking-wider">Networking & Cloud</span>
-                        <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white">Cisco Certified DevNet</h3>
-                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">Automate network operations with Python and modern DevOps tools on Cisco hardware.</p>
-                        <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
-                            <span class="text-lg font-bold text-slate-900 dark:text-white">$349</span>
-                            <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Course Card 3 -->
-                <div class="group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all">
-                    <div class="h-48 overflow-hidden bg-slate-200">
-                        <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqSrJL59aR8a2xd-JY2bynRMLJS_ZfRzpRTR2ojSg03My1WSohKcajVlpBsk6LflyqoFGSKfQBkl5BKV_P525GH7Y_iQJbBcdvxh_o2tXHyeZWqyUELo_AT4jqBW99lH0sq1-tNle6Y20TfECrltj-1ArugCMUUUHemaBnIaK3Iuu3yg6V27XhS0QG6_x7LOI-UrrXCXezpbxTNXsYCXqlomsdqN0y_hVAS1Q0wlFLLpWM0gRT3uF6suj9-WBNcmTVdeNdMZFRb8U" />
-                    </div>
-                    <div class="p-6">
-                        <span class="px-2 py-1 rounded-md bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 text-[10px] font-bold uppercase tracking-wider">Databases</span>
-                        <h3 class="text-xl font-bold mt-3 mb-2 text-slate-900 dark:text-white">Oracle NoSQL Essentials</h3>
-                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">Learn to design high-performance NoSQL architectures for high-volume data applications.</p>
-                        <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700 pt-4">
-                            <span class="text-lg font-bold text-slate-900 dark:text-white">$279</span>
-                            <a href="/Home/courses" class="text-primary font-bold text-sm">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
+                    }
+                }
             </div>
         </div>
+    </section>
+
+    <!-- Check Result Section -->
+    <section class="py-24 bg-slate-900 text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-6">
+                <span class="material-symbols-outlined text-sm">fact_check</span> Admissions Fast-Track
+            </span>
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-6">Track Your Admission Status</h2>
+            <p class="text-lg text-slate-400 mb-10 max-w-2xl mx-auto">Already took the entrance exam? Enter your unique Hall Ticket Number below to instantly view your official score card and placement standing.</p>
+            
+            <form asp-controller="EntranceExam" asp-action="CheckResult" method="get" class="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto bg-slate-800 p-2 rounded-2xl border border-slate-700 shadow-2xl">
+                <input type="text" name="ticketNumber" placeholder="Hall Ticket (e.g. HT-1234)" required class="flex-1 bg-transparent border-none text-white px-6 py-4 outline-none focus:ring-0 placeholder:text-slate-500 text-lg w-full min-w-0" />
+                <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2 whitespace-nowrap">
+                    Search <span class="material-symbols-outlined text-sm">search</span>
+                </button>
+            </form>
+        </div>
+        <!-- Decorative bg blur -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[300px] bg-primary/20 blur-[120px] rounded-full pointer-events-none"></div>
     </section>
 
     <!-- CTA Section - Entrance Exams -->

@@ -46,9 +46,21 @@
                     </nav>
                 </div>
                 <div class="flex items-center gap-4">
-                    @if (Context.Session.GetString("email") != null)
+                    @if (Context.Session.GetString("UserEmail") != null || Context.Session.GetString("AdminUser") != null)
                     {
-                        <a asp-controller="Account" asp-action="Logout" class="bg-red-500 text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-red-600 transition-all">
+                        var userName = Context.Session.GetString("UserName") ?? Context.Session.GetString("AdminUser") ?? "User";
+                        var userInitial = !string.IsNullOrEmpty(userName) ? userName.Substring(0, 1).ToUpper() : "U";
+
+                        <div class="flex items-center gap-3 mr-2">
+                            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-lg shadow-sm border border-primary/20">
+                                @userInitial
+                            </div>
+                            <div class="hidden md:block text-left mr-2">
+                                <p class="text-sm font-bold text-slate-800 leading-tight">@userName</p>
+                            </div>
+                        </div>
+
+                        <a asp-controller="Account" asp-action="Logout" class="bg-red-50 text-red-600 px-4 py-2.5 rounded-xl text-sm font-bold hover:bg-red-500 hover:text-white transition-all">
                             Logout
                         </a>
                     }
@@ -61,7 +73,6 @@
                             Sign Up
                         </a>
                     }
-                    <a asp-controller="Admin" asp-action="LogIn" class="text-xs font-bold text-slate-500 hover:text-primary">Admin</a>
                 </div>
             </div>
         </div>

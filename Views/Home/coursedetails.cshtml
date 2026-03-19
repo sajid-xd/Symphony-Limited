@@ -1,161 +1,140 @@
-﻿@{
+@{
     ViewData["Title"] = "coursedetails";
 }
 
-<main class="main">
-
-    <div class="page-title" data-aos="fade">
-        <div class="heading">
-            <div class="container">
-                <div class="row d-flex justify-content-center text-center">
-                    <div class="col-lg-8">
-                        <h1>Course Details</h1>
-                        <p class="mb-0">Explore the comprehensive curriculum of our professional certification programs. We provide end-to-end training materials and hands-on lab experience to ensure your success.</p>
-                    </div>
-                </div>
-            </div>
+<main class="w-full bg-slate-50 dark:bg-slate-950 pb-20">
+    <!-- Hero Section -->
+    <section class="relative bg-primary overflow-hidden pt-20 pb-24 md:pt-32 md:pb-36">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-primary to-transparent opacity-80"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 px-3 py-1 bg-white/10 text-white rounded-full text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+                Professional Certification
+            </span>
+            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
+                Master the Art of <br /> Software Engineering
+            </h1>
+            <p class="text-lg md:text-2xl text-primary-100 max-w-3xl mx-auto font-medium text-white/80">
+                Explore the comprehensive curriculum of our professional certification programs. End-to-end training and hands-on labs await.
+            </p>
         </div>
-        <nav class="breadcrumbs">
-            <div class="container">
-                <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li class="current">Course Details</li>
-                </ol>
-            </div>
-        </nav>
-    </div><section id="courses-course-details" class="courses-course-details section">
+    </section>
 
-        <div class="container" data-aos="fade-up">
-
-            <div class="row">
-                <div class="col-lg-8">
-                    <img src="assets/img/course-details.jpg" class="img-fluid" alt="IT Certification Training">
-                    <h3>Professional IT & Software Certification</h3>
-                    <p>
+    <!-- Main Content Grid -->
+    <section class="max-w-7xl mx-auto px-6 -mt-12 relative z-20">
+        <div class="grid lg:grid-cols-3 gap-8 items-start">
+            
+            <!-- Left Info Block -->
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white dark:bg-slate-900 rounded-[2rem] p-8 md:p-12 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
+                    <h2 class="text-3xl font-black text-slate-900 dark:text-white mb-6">Course Overview</h2>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-6">
                         Our certification programs are designed to meet industry standards. Whether you are starting from the basics or looking for advanced certification in Java, SQL Server, or Oracle, Symphony Ltd. provides the right environment for your growth.
                     </p>
-                    <p>
+                    <p class="text-slate-600 dark:text-slate-400 text-lg leading-relaxed mb-8">
                         We focus on practical implementation. Every module is followed by lab assignments where our faculty provides 24-hour guidance. This ensures that students not only learn the theory but also master the tools required in the professional IT sector.
                     </p>
-                </div>
-                <div class="col-lg-4">
 
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Lead Trainer</h5>
-                        <p><a href="#">Zeeshan Ahmed</a></p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Course Fee</h5>
-                        <p>Rs. 168,000</p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Available Seats</h5>
-                        <p>25</p>
-                    </div>
-
-                    <div class="course-info d-flex justify-content-between align-items-center">
-                        <h5>Lab Timings</h5>
-                        <p>9:00 am - 9:00 pm</p>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-
-    </section><section id="tabs" class="tabs section">
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row">
-                <div class="col-lg-3">
-                    <ul class="nav nav-tabs flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">Course Overview</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">Lab Facilities</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">Faculty Guidance</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">Certification Prep</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">Segregation Policy</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-9 mt-4 mt-lg-0">
-                    <div class="tab-content">
-                        <div class="tab-pane active show" id="tab-1">
-                            <div class="row">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Comprehensive IT Curriculum</h3>
-                                    <p class="fst-italic">Starting from core basics to professional industry-recognized certifications.</p>
-                                    <p>Our courses cover Java, Networking, and Database Management. We provide updated study materials and research resources through our on-campus library to help with assignments.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/tabs/tab-1.png" alt="" class="img-fluid">
-                                </div>
+                    <!-- Features Grid -->
+                    <div class="grid sm:grid-cols-2 gap-6 mt-12 pt-12 border-t border-slate-100 dark:border-slate-800">
+                        <!-- Feature 1 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined">menu_book</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Comprehensive Curriculum</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Starting from core basics to professional industry-recognized certifications.</p>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-2">
-                            <div class="row">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>State-of-the-art Labs</h3>
-                                    <p class="fst-italic">High-tech lab environment available for extra practice sessions.</p>
-                                    <p>Students can access labs till late hours. We encourage hands-on practice for SQL Server and Oracle modules to ensure students are ready for the practical challenges of the IT industry.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/tabs/tab-2.png" alt="" class="img-fluid">
-                                </div>
+                        <!-- Feature 2 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined">computer</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">State-of-the-art Labs</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">High-tech lab environment available late hours for extra practice sessions.</p>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-3">
-                            <div class="row">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>24-Hour Expert Guidance</h3>
-                                    <p class="fst-italic">Maximum attention provided by our subject matter experts.</p>
-                                    <p>Our faculty members are available to help with lab sessions, assignments, and research. They provide regular suggestions for improvement based on individual student performance.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/tabs/tab-3.png" alt="" class="img-fluid">
-                                </div>
+                        <!-- Feature 3 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 rounded-2xl bg-amber-50 dark:bg-amber-900/20 text-amber-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined">support_agent</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">24/7 Expert Guidance</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Maximum attention provided by our subject matter experts for lab sessions.</p>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tab-4">
-                            <div class="row">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Certification Readiness</h3>
-                                    <p class="fst-italic">Tailored materials for Java and Oracle professional exams.</p>
-                                    <p>We provide mock tests and intensive preparation modules. Our goal is to ensure that every student successfully clears their certification exam within the course duration.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/tabs/tab-4.png" alt="" class="img-fluid">
-                                </div>
+                        <!-- Feature 4 -->
+                        <div class="flex gap-4">
+                            <div class="w-12 h-12 shrink-0 rounded-2xl bg-rose-50 dark:bg-rose-900/20 text-rose-600 flex items-center justify-center">
+                                <span class="material-symbols-outlined">workspace_premium</span>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="tab-5">
-                            <div class="row">
-                                <div class="col-lg-8 details order-2 order-lg-1">
-                                    <h3>Entrance & Segregation</h3>
-                                    <p class="fst-italic">Assessments to ensure you start at the right level.</p>
-                                    <p>Based on our bi-annual entrance exams, we segregate students into batches. This ensures beginners start with basics, while advanced learners focus directly on certification modules.</p>
-                                </div>
-                                <div class="col-lg-4 text-center order-1 order-lg-2">
-                                    <img src="assets/img/tabs/tab-5.png" alt="" class="img-fluid">
-                                </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Certification Prep</h4>
+                                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Tailored materials and mock tests for top Java and Oracle exams.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div>
+            <!-- Right Sidebar / Course Details Info Block -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- Summary Card -->
+                <div class="bg-white dark:bg-slate-900 rounded-[2rem] p-8 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-8">Course Info</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">person</span>
+                                <span class="font-semibold text-slate-500">Lead Trainer</span>
+                            </div>
+                            <span class="font-bold text-slate-900 dark:text-white">Zeeshan Ahmed</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">payments</span>
+                                <span class="font-semibold text-slate-500">Course Fee</span>
+                            </div>
+                            <span class="font-bold text-slate-900 dark:text-white">Rs. 168,000</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">groups</span>
+                                <span class="font-semibold text-slate-500">Available Seats</span>
+                            </div>
+                            <span class="font-bold text-slate-900 dark:text-white">25</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">schedule</span>
+                                <span class="font-semibold text-slate-500">Lab Timings</span>
+                            </div>
+                            <span class="font-bold text-slate-900 dark:text-white">9:00 AM - 9:00 PM</span>
+                        </div>
+                    </div>
+                    
+                    <a asp-controller="EntranceExam" asp-action="Index" class="mt-8 w-full block text-center bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-primary/25">
+                        Register for Entrance
+                    </a>
+                </div>
 
+                <!-- Secondary Card -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-[2rem] p-8 text-white shadow-xl">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-4">school</span>
+                    <h3 class="text-xl font-bold mb-3">Entrance Segregation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Based on our bi-annual entrance exams, we segregate students into batches. This ensures beginners start with basics, while advanced learners focus directly on certification modules.
+                    </p>
+                    <a asp-controller="EntranceExam" asp-action="Index" class="inline-flex items-center text-sm font-bold text-primary hover:text-white transition-colors">
+                        Learn about exams <span class="material-symbols-outlined text-base ml-1">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </section>
 </main>

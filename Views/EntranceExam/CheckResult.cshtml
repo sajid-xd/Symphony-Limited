@@ -1,0 +1,119 @@
+@model SymphonyLimited.Models.ExamEnrollment
+
+@{
+    ViewData["Title"] = "Exam Results & Details";
+}
+
+<main class="w-full bg-slate-50 dark:bg-slate-950 pb-20 pt-16 min-h-screen">
+    <div class="max-w-3xl mx-auto px-6">
+        <div class="mb-10 flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mb-2">Admission Status</h1>
+                <p class="text-slate-500 font-medium">Here are your complete enrollment details for the entrance examination.</p>
+            </div>
+            <a asp-action="Index" class="px-6 py-3 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold hover:bg-slate-100 transition-colors border border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">arrow_back</span> Return
+            </a>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-[2rem] shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 p-8 md:p-12">
+            
+            <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 mb-8 border-b border-slate-100 dark:border-slate-800 gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center">
+                        <span class="material-symbols-outlined text-3xl">badge</span>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-1">Hall Ticket / Roll Number</p>
+                        <p class="text-2xl font-black text-slate-900 dark:text-white font-mono">@Model.HallTicketNumber</p>
+                    </div>
+                </div>
+
+                <div class="md:text-right">
+                    <p class="text-xs font-bold tracking-widest uppercase text-slate-400 mb-2">Application Status</p>
+                    @if (Model.Status == "Pending")
+                    {
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-xl font-bold text-sm border border-amber-200">
+                            <span class="material-symbols-outlined text-sm">hourglass_empty</span> Pending Evaluation
+                        </span>
+                    }
+                    else if (Model.Status == "Passed")
+                    {
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-xl font-bold text-sm border border-emerald-200">
+                            <span class="material-symbols-outlined text-sm">verified</span> Passed, Admitted
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 text-red-700 rounded-xl font-bold text-sm border border-red-200">
+                            <span class="material-symbols-outlined text-sm">cancel</span> Failed
+                        </span>
+                    }
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-8">
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Applicant Information</h4>
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
+                        <p class="text-slate-500 text-xs mb-1">Applicant Name</p>
+                        <p class="font-bold text-slate-900 dark:text-white mb-4">@(ViewBag.FullName ?? "Not Provided")</p>
+
+                        <p class="text-slate-500 text-xs mb-1">Registered Email</p>
+                        <p class="font-bold text-slate-900 dark:text-white mb-4">@Model.UserEmail</p>
+
+                        <p class="text-slate-500 text-xs mb-1">Phone Number</p>
+                        <p class="font-bold text-slate-900 dark:text-white mb-4">@(ViewBag.Phone ?? "Not Provided")</p>
+
+                        <p class="text-slate-500 text-xs mb-1">Target Course</p>
+                        <p class="font-bold text-slate-900 dark:text-white">@Model.Course.CourseName</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-3">Exam Details</h4>
+                    <div class="p-5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
+                        <p class="text-slate-500 text-xs mb-1">Exam Date & Time</p>
+                        <p class="font-bold text-slate-900 dark:text-white mb-4">@Model.EntranceExam.ExamDate.ToString("MMMM dd, yyyy") <br/><span class="text-slate-500 font-medium text-sm">@Model.EntranceExam.ExamDate.ToString("hh:mm tt") AST</span></p>
+
+                        <p class="text-slate-500 text-xs mb-1">Enrolled On</p>
+                        <p class="font-bold text-slate-900 dark:text-white">@Model.EnrollmentDate.ToString("MMM dd, yyyy")</p>
+                    </div>
+                </div>
+            </div>
+
+            @if (ViewBag.Result != null)
+            {
+                var marks = (float)ViewBag.Result.Marks;
+                var fees = (float)ViewBag.Result.CourseFees;
+                var date = (DateTime)ViewBag.Result.LastDateOfPayment;
+                
+                <div class="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800 border-dashed">
+                    <h4 class="text-lg font-black text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">school</span> Official Score Card
+                    </h4>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-primary/5 border border-primary/10 rounded-2xl p-4 text-center">
+                            <p class="text-xs font-bold text-primary uppercase tracking-widest mb-1">Score</p>
+                            <p class="text-2xl font-black text-primary">@marks.ToString("0.0")<span class="text-sm font-medium">/100</span></p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 rounded-2xl p-4 text-center">
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Standing</p>
+                            <p class="text-lg font-black text-slate-900 dark:text-white pt-1">Admitted</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 rounded-2xl p-4 text-center">
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Tuition Form</p>
+                            <p class="text-lg font-black text-slate-900 dark:text-white pt-1">Rs. @fees.ToString("N0")</p>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 rounded-2xl p-4 text-center">
+                            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">Pay By</p>
+                            <p class="text-sm font-black text-slate-900 dark:text-white pt-2">@date.ToString("MMM dd")</p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</main>

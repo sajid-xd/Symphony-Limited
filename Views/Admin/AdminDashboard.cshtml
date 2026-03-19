@@ -1,103 +1,94 @@
-﻿@{
+@{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
 }
-<main style="margin-top: 58px">
-    <div class="container pt-4">
-        <section>
-            <div class="row">
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Courses</h4>
-                                        @* <p class="mb-0">Monthly blog posts</p> *@
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <a asp-controller="Courses" asp-action="Index" class="text-decoration-none">
-                                        <h2 class="h1 mb-0">@ViewBag.CoursesCount</h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <i class="far fa-comment-alt text-warning fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total FAQ's</h4>
-                                        @* <p class="mb-0">Monthly blog posts</p> *@
-                                    </div>
-                                </div>  
-                                <<div class="align-self-center">
-                                    <a asp-controller="Faq" asp-action="Index" class="text-decoration-none">
-                                        <h2 class="h1 mb-0">@ViewBag.QuestionsCount</h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Students</h4>
-                                        @* <p class="mb-0">Monthly blog posts</p> *@
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <a asp-controller="Students" asp-action="Index" class="text-decoration-none">
-                                        <h2 class="h1 mb-0">@ViewBag.Students</h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between p-md-1">
-                                <div class="d-flex flex-row">
-                                    <div class="align-self-center">
-                                        <i class="fas fa-pencil-alt text-info fa-3x me-4"></i>
-                                    </div>
-                                    <div>
-                                        <h4>Total Contact Centre</h4>
-                                        @* <p class="mb-0">Monthly blog posts</p> *@
-                                    </div>
-                                </div>
-                                <div class="align-self-center">
-                                    <a asp-controller="ContactCentre" asp-action="Index" class="text-decoration-none">
-                                        <h2 class="h1 mb-0">@ViewBag.ContactCentreCount</h2>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Section: Statistics with subtitles-->
-    </div>
-</main>
 
+<div class="mb-8">
+    <h1 class="text-3xl font-black text-slate-900 dark:text-white mb-2">Dashboard Overview</h1>
+    <p class="text-slate-500 font-medium">Here's what's happening in your institute today.</p>
+</div>
+
+<!-- Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    
+    <!-- Courses Stat -->
+    <a asp-controller="Courses" asp-action="Index" class="block bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20 transition-all group cursor-pointer" style="text-decoration:none;">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-3xl">library_books</span>
+            </div>
+            <div class="text-right">
+                <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1">Total Courses</p>
+                <h3 class="text-3xl font-black text-slate-900 dark:text-white">@ViewBag.CoursesCount</h3>
+            </div>
+        </div>
+        <div class="flex items-center text-sm font-semibold text-slate-500">
+            <span class="material-symbols-outlined text-sm mr-1">arrow_forward</span> Manage Courses
+        </div>
+    </a>
+
+    <!-- FAQ Stat -->
+    <a asp-controller="Faq" asp-action="Index" class="block bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 hover:-translate-y-1 hover:shadow-2xl hover:shadow-orange-500/20 transition-all group cursor-pointer" style="text-decoration:none;">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 rounded-2xl bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 flex items-center justify-center group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-3xl">live_help</span>
+            </div>
+            <div class="text-right">
+                <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1">Total FAQs</p>
+                <h3 class="text-3xl font-black text-slate-900 dark:text-white">@ViewBag.QuestionsCount</h3>
+            </div>
+        </div>
+        <div class="flex items-center text-sm font-semibold text-slate-500">
+            <span class="material-symbols-outlined text-sm mr-1">arrow_forward</span> Manage FAQ
+        </div>
+    </a>
+
+    <!-- Students Stat -->
+    <a asp-controller="Students" asp-action="Index" class="block bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/20 transition-all group cursor-pointer" style="text-decoration:none;">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-3xl">school</span>
+            </div>
+            <div class="text-right">
+                <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1">Total Students</p>
+                <h3 class="text-3xl font-black text-slate-900 dark:text-white">@(ViewBag.Students ?? ViewBag.StudentsCount ?? 0)</h3>
+            </div>
+        </div>
+        <div class="flex items-center text-sm font-semibold text-slate-500">
+            <span class="material-symbols-outlined text-sm mr-1">arrow_forward</span> Manage Students
+        </div>
+    </a>
+
+    <!-- Contact Center Stat -->
+    <a asp-controller="ContactCenter" asp-action="Index" class="block bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/20 transition-all group cursor-pointer" style="text-decoration:none;">
+        <div class="flex items-center justify-between mb-4">
+            <div class="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                <span class="material-symbols-outlined text-3xl">support_agent</span>
+            </div>
+            <div class="text-right">
+                <p class="text-sm font-bold text-slate-500 dark:text-slate-400 mb-1">Contact Center</p>
+                <h3 class="text-3xl font-black text-slate-900 dark:text-white">@ViewBag.ContactCentreCount</h3>
+            </div>
+        </div>
+        <div class="flex items-center text-sm font-semibold text-slate-500">
+            <span class="material-symbols-outlined text-sm mr-1">arrow_forward</span> Manage Inquiries
+        </div>
+    </a>
+
+</div>
+
+<!-- Decorative Banner -->
+<div class="bg-primary rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden shadow-2xl shadow-primary/30 mt-8">
+    <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none"></div>
+    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-black text-white mb-4 drop-shadow-sm">Manage System Resources</h2>
+            <p class="text-white/80 font-medium max-w-xl text-lg leading-relaxed">
+                Use the navigation menu on the left to access students, courses, exams, and more. All tables are fully searchable and sortable.
+            </p>
+        </div>
+        <div class="hidden md:flex items-center justify-center w-32 h-32 bg-white/10 rounded-3xl backdrop-blur-md shadow-inner shrink-0 rotate-3 hover:rotate-0 transition-transform cursor-default">
+            <span class="material-symbols-outlined text-[80px] text-white/90 drop-shadow-md">data_thresholding</span>
+        </div>
+    </div>
+</div>

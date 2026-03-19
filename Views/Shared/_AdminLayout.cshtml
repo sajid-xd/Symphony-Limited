@@ -1,194 +1,160 @@
-﻿<!DOCTYPE html>
-
-<html>
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Admin Panel</title>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" />
-    <!-- Google Fonts Roboto -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Symphony Limited</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Material Symbols Outlined -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <!-- DataTables CSS for legacy tables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
-    <!-- MDB -->
-    <link rel="stylesheet" href="~/admincss/mdb.min.css" />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="~/admincss/admin.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
-            crossorigin="anonymous"></script>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0f49bd",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Custom tweaks to make static DataTables look cohesive with Tailwind */
+        .dataTables_wrapper { padding: 1rem; border-radius: 1rem; background: white; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .dataTables_wrapper .dataTables_filter input { border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.5rem 0.75rem; outline: none; margin-left: 0.5rem; transition: all 0.2s; }
+        .dataTables_wrapper .dataTables_filter input:focus { border-color: #0f49bd; box-shadow: 0 0 0 2px rgba(15, 73, 189, 0.2); }
+        .dataTables_wrapper .dataTables_length select { border: 1px solid #e2e8f0; border-radius: 0.5rem; padding: 0.5rem 1rem 0.5rem 0.5rem; outline: none; margin: 0 0.5rem; }
+        table.dataTable thead th { border-bottom: 2px solid #e2e8f0 !important; color: #475569; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; padding-top: 1rem; padding-bottom: 1rem; }
+        table.dataTable tbody td { border-bottom: 1px solid #f1f5f9; vertical-align: middle; padding-top: 1rem; padding-bottom: 1rem; color: #475569; font-size: 0.875rem; font-weight: 500; }
+        /* Badge link for actions usually inside datatables */
+        .table a { color: #0f49bd; font-weight: 600; text-decoration: none; display: inline-block; padding: 0.25rem 0.5rem; border-radius: 0.25rem; transition: background 0.2s; }
+        .table a:hover { background: rgba(15, 73, 189, 0.1); }
+    </style>
 </head>
-<body>
-    <header>
-        <!-- Sidebar -->
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-            <div class="position-sticky">
-                <div class="list-group list-group-flush mx-3 mt-4">
-                    <a href="#" class="list-group-item list-group-item-action py-2 active" data-mdb-ripple-init aria-current="true">
-                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Main dashboard</span>
-                    </a>
-                    <a asp-controller="Students" asp-action="Index" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
-                        <i class="fas fa-chart-area fa-fw me-3"></i><span>Students </span>
-                    </a>
-                    <a asp-controller="Courses" asp-action="Index" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
-                        <i class="fas fa-chart-area fa-fw me-3"></i><span>Courses </span>
-                    </a>
-                    <a asp-controller="EntranceExam" asp-action="Index" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
-                        <i class="fas fa-lock fa-fw me-3"></i><span>Entrance Exam</span>
-                    </a>
-                    <a asp-controller="Result" asp-action="Index" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
-                        <i class="fas fa-chart-line fa-fw me-3"></i><span>Result</span>
-                    </a>
-                    <a asp-controller="Faq" asp-action="Index" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
-                        <i class="fas fa-chart-pie fa-fw me-3"></i><span>FAQ</span>
-                    </a>
-                    <a asp-controller="ContactCenter" asp-action="Index" class="list-group-item list-group-item-action py-2" data-mdb-ripple-init>
-                        <i class="fas fa-chart-bar fa-fw me-3"></i><span>Contact</span>
-                    </a>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 flex h-screen overflow-hidden selection:bg-primary/20">
+    
+    <!-- Sidebar / Navigation -->
+    <aside class="w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col hide-scrollbar overflow-y-auto shrink-0 shadow-xl shadow-slate-200/50">
+        <!-- Brand -->
+        <div class="h-20 flex items-center gap-3 px-8 border-b border-slate-100 dark:border-slate-800 shrink-0">
+            <span class="material-symbols-outlined text-primary text-3xl drop-shadow-sm">terminal</span>
+            <span class="text-xl font-black tracking-tight text-slate-800">Admin System</span>
+        </div>
+        
+        <!-- Menu -->
+        <nav class="flex-1 p-5 space-y-1">
+            <a asp-controller="Admin" asp-action="AdminDashboard" class="flex items-center gap-3 px-4 py-3.5 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[22px]">dashboard</span> Dashboard
+            </a>
+            
+            <div class="pt-6 pb-2 px-4 text-xs font-black text-slate-400 uppercase tracking-widest">Management</div>
+            
+            <a asp-controller="Students" asp-action="Index" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[20px]">school</span> Students
+            </a>
+            <a asp-controller="Courses" asp-action="Index" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[20px]">library_books</span> Courses
+            </a>
+
+            <a asp-controller="EntranceExam" asp-action="Enrollments" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[20px]">how_to_reg</span> Exam Enrollments
+            </a>
+            <a asp-controller="Result" asp-action="Index" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[20px]">workspace_premium</span> Result
+            </a>
+            
+            <div class="pt-6 pb-2 px-4 text-xs font-black text-slate-400 uppercase tracking-widest">Support</div>
+            
+            <a asp-controller="Faq" asp-action="Index" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[20px]">live_help</span> FAQ
+            </a>
+            <a asp-controller="ContactCenter" asp-action="Index" class="flex items-center gap-3 px-4 py-3 text-sm font-bold rounded-xl text-slate-600 hover:text-primary hover:bg-primary/10 transition-all">
+                <span class="material-symbols-outlined text-[20px]">support_agent</span> Contact Center
+            </a>
+        </nav>
+        
+        <!-- User Profile footer in Sidebar -->
+        <div class="p-5 border-t border-slate-100 dark:border-slate-800">
+            <a asp-controller="Account" asp-action="Logout" class="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-bold rounded-xl text-red-600 hover:text-white bg-red-50 hover:bg-red-500 hover:shadow-lg hover:shadow-red-500/30 transition-all">
+                <span class="material-symbols-outlined text-[20px]">logout</span> Sign Out
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Viewport -->
+    <div class="flex-1 flex flex-col min-w-0 bg-slate-50">
+        <!-- Top Navigation -->
+        <header class="h-20 bg-white/70 dark:bg-slate-900/80 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-8 shrink-0 z-10 sticky top-0">
+            <div class="flex items-center gap-4 text-slate-800 font-bold text-lg">
+                <span class="material-symbols-outlined text-slate-400">waving_hand</span> Welcome back, @(Context.Session.GetString("AdminUser") ?? Context.Session.GetString("UserName") ?? "Administrator")
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Notifications Bell -->
+                <button class="relative text-slate-400 hover:text-primary transition-all">
+                    <span class="material-symbols-outlined text-2xl">notifications</span>
+                    <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+                
+                <div class="w-px h-8 bg-slate-200"></div>
+
+                <div class="flex items-center gap-3 cursor-pointer group">
+                    @{
+                        var adminName = Context.Session.GetString("AdminUser") ?? Context.Session.GetString("UserName") ?? "System Admin";
+                        var userEmail = Context.Session.GetString("UserEmail");
+                        var displayEmail = string.IsNullOrEmpty(userEmail) ? $"{adminName.ToLower().Replace(" ", "")}@symphony.com" : userEmail;
+                        var initial = !string.IsNullOrEmpty(adminName) ? adminName.Substring(0, 1).ToUpper() : "A";
+                    }
+                    <div class="text-right hidden md:block">
+                        <p class="text-sm font-bold text-slate-700">@adminName</p>
+                        <p class="text-xs font-semibold text-slate-400">@displayEmail</p>
+                    </div>
+                    <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-lg group-hover:bg-primary group-hover:text-white transition-all shadow-sm">
+                        @initial
+                    </div>
+                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary transition-colors">expand_more</span>
                 </div>
             </div>
-        </nav>
-        <!-- Sidebar -->
-        <!-- Navbar -->
-        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-            <!-- Container wrapper -->
-            <div class="container-fluid">
-                <!-- Toggle button -->
-                <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#sidebarMenu"
-                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-bars"></i>
-                </button>
+        </header>
 
-                <!-- Brand -->
-                <a class="navbar-brand" href="#">
-                    <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" height="25" alt="" loading="lazy" />
-                </a>
-                <!-- Right links -->
-                <ul class="navbar-nav ms-auto d-flex flex-row">
-                    <!-- Notification dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
-                           role="button" data-mdb-dropdown-init aria-expanded="false">
-                            <i class="fas fa-bell"></i>
-                            <span class="badge rounded-pill badge-notification bg-danger">1</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Some news</a></li>
-                            <li><a class="dropdown-item" href="#">Another news</a></li>
-                            <li>
-                                <a class="dropdown-item" href="#">Something else</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Icon -->
-                    <li class="nav-item">
-                        <a class="nav-link me-3 me-lg-0" href="#">
-                            <i class="fas fa-fill-drip"></i>
-                        </a>
-                    </li>
-                    <!-- Icon -->
-                    <li class="nav-item me-3 me-lg-0">
-                        <a class="nav-link" href="#">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-
-                    <!-- Icon dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown" role="button"
-                           data-mdb-dropdown-init aria-expanded="false">
-                            <i class="united kingdom flag m-0"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="united kingdom flag"></i>English
-                                    <i class="fa fa-check text-success ms-2"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="poland flag"></i>Polski</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="china flag"></i>中文</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="japan flag"></i>日本語</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="germany flag"></i>Deutsch</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="france flag"></i>Français</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="spain flag"></i>Español</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="russia flag"></i>Русский</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="portugal flag"></i>Português</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Avatar -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
-                           id="navbarDropdownMenuLink" role="button" data-mdb-dropdown-init aria-expanded="false">
-                            <img src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg" class="rounded-circle" height="22"
-                                 alt="" loading="lazy" />
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">My profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li>
-                                <form asp-controller="Admin" asp-action="Logout" method="post">
-                                    <button type="submit" class="dropdown-item">Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- Container wrapper -->
-        </nav>
-        <!-- Navbar -->
-    </header>
-    <div>
-        @RenderBody()
+        <!-- Page Content Wrapper -->
+        <main class="flex-1 overflow-y-auto p-6 md:p-10 relative">
+            @RenderBody()
+        </main>
     </div>
 
-    <script type="text/javascript" src="~/adminjs/mdb.umd.min.js"></script>
-    <script type="text/javascript" src="~/adminjs/admin.js"></script>
+    <!-- Global Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <!-- DataTables JS -->
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-
     <script>
         $(document).ready(function () {
-            $('#coursesTable').DataTable({
-                "pageLength": 10,
-                "lengthChange": true,
-                "ordering": true,
-                "searching": true,
-                "autoWidth": false,
-                "scrollX": true,       // Enable horizontal scroll
-                "scrollCollapse": true
-            });
+            var tableElements = $('.table');
+            if (tableElements.length > 0) {
+                // Remove legacy bootstrap classes that interfere with the custom tailwind overrides
+                tableElements.removeClass('table-bordered table-striped table-hover');
+                tableElements.DataTable({
+                    "pageLength": 10,
+                    "lengthChange": true,
+                    "ordering": true,
+                    "searching": true,
+                    "autoWidth": false,
+                    "scrollX": true
+                });
+            }
         });
     </script>
-
-
-    @RenderSection("Scripts", required: false)
-
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -190,6 +190,44 @@ namespace SymphonyLimited.Migrations
                     b.ToTable("EntranceExams");
                 });
 
+            modelBuilder.Entity("SymphonyLimited.Models.ExamEnrollment", b =>
+                {
+                    b.Property<int>("EnrollmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EnrollmentId"));
+
+                    b.Property<int?>("CourseId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EnrollmentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EntranceExamId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HallTicketNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserEmail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EnrollmentId");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("EntranceExamId");
+
+                    b.ToTable("ExamEnrollments");
+                });
+
             modelBuilder.Entity("SymphonyLimited.Models.FAQ", b =>
                 {
                     b.Property<int>("FAQId")
@@ -356,6 +394,25 @@ namespace SymphonyLimited.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("Students");
+                });
+
+            modelBuilder.Entity("SymphonyLimited.Models.ExamEnrollment", b =>
+                {
+                    b.HasOne("SymphonyLimited.Models.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SymphonyLimited.Models.EntranceExam", "EntranceExam")
+                        .WithMany()
+                        .HasForeignKey("EntranceExamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("EntranceExam");
                 });
 
             modelBuilder.Entity("SymphonyLimited.Models.Result", b =>

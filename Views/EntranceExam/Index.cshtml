@@ -5,6 +5,22 @@
 }
 
 <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+    <!-- Alerts -->
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="mb-8 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center gap-3">
+            <span class="material-symbols-outlined text-emerald-500">check_circle</span>
+            <p class="text-emerald-700 font-bold">@TempData["SuccessMessage"]</p>
+        </div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="mb-8 p-4 rounded-2xl bg-red-50 border border-red-200 flex items-center gap-3">
+            <span class="material-symbols-outlined text-red-500">error</span>
+            <p class="text-red-700 font-bold">@TempData["ErrorMessage"]</p>
+        </div>
+    }
+
     <!-- Header -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
         <div class="max-w-2xl">
@@ -18,7 +34,11 @@
             </div>
             <div>
                 <p class="text-xs text-slate-500 font-bold uppercase">Next Enrollment</p>
-                <p class="text-slate-900 dark:text-white font-bold">Fall 2024</p>
+                @{
+                    var upcomingExam = Model?.OrderBy(x => x.ExamDate).FirstOrDefault(x => x.ExamDate >= DateTime.Now);
+                    string nextEnrollmentText = upcomingExam != null ? upcomingExam.ExamDate.ToString("MMMM yyyy") : "TBA";
+                }
+                <p class="text-slate-900 dark:text-white font-bold">@nextEnrollmentText</p>
             </div>
         </div>
     </div>
@@ -37,17 +57,29 @@
                         <span class="text-2xl font-black text-slate-900 dark:text-white">$@exam.ExamFees.ToString("N0")</span>
                     </div>
                     
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Entrance Examination</h3>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Entrance Examination - @exam.ExamDate.ToString("MMM")</h3>
                     <p class="text-slate-500 dark:text-slate-400 text-sm mb-8 flex-1 leading-relaxed">@exam.Description</p>
                     
                     <div class="pt-6 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                         <div class="flex items-center gap-2">
                              <span class="material-symbols-outlined text-primary text-base">schedule</span>
-                             <span class="text-xs font-medium text-slate-600 dark:text-slate-400">10:00 AM AST</span>
+                             <span class="text-xs font-medium text-slate-600 dark:text-slate-400">@exam.ExamDate.ToString("hh:mm tt") AST</span>
                         </div>
-                        <a href="#" class="text-primary font-bold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                            Register Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
-                        </a>
+                        @{
+                            bool isLoggedIn = Context.Session.GetString("UserEmail") != null || Context.Session.GetString("AdminUser") != null;
+                        }
+                        @if (!isLoggedIn)
+                        {
+                            <a asp-controller="Account" asp-action="Registration" class="text-primary font-bold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                Register Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Enroll" asp-route-id="@exam.EntranceExamId" class="text-emerald-600 font-bold text-sm flex items-center gap-1 group-hover:translate-x-1 transition-transform bg-transparent border-none cursor-pointer">
+                                Enroll Now <span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            </a>
+                        }
                     </div>
                 </div>
             }
@@ -70,10 +102,10 @@
                 <span class="text-primary font-bold text-sm uppercase tracking-widest mb-4 block">Quick Check</span>
                 <h2 class="text-3xl md:text-4xl font-black text-white mb-6 leading-tight">View Your Exam Results Instantly</h2>
                 <p class="text-slate-400 mb-8 text-lg">Access your certification progress and marks sheet by entering your unique hall ticket number.</p>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input type="text" placeholder="Hall Ticket Number" class="px-6 py-4 rounded-xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-primary outline-none flex-1" />
-                    <button class="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-primary/25">Check Results</button>
-                </div>
+                <form asp-action="CheckResult" method="get" class="flex flex-col sm:flex-row gap-3">
+                    <input type="text" name="ticketNumber" placeholder="Hall Ticket Number" required class="px-6 py-4 rounded-xl bg-slate-800 border-none text-white focus:ring-2 focus:ring-primary outline-none flex-1" />
+                    <button type="submit" class="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-primary/25">Check Results</button>
+                </form>
             </div>
             <div class="hidden md:block">
                  <div class="bg-slate-800/50 backdrop-blur-xl rounded-3xl p-8 border border-white/5">
