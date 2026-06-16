@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SymphonyLimited")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f85fb61b5729d14941cd6b72b9693c8b6805d4f3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac36a020e43d2ecb3a4a79067c1fc724fe9cb795")]
 [assembly: System.Reflection.AssemblyProductAttribute("SymphonyLimited")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SymphonyLimited")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
